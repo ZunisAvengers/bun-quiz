@@ -7,6 +7,8 @@
     "dev-docker": "docker rmi quiz:1; docker build --tag quiz:1 . ; docker-compose up"
   },
   "dependencies": {
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/jwt": "^0.8.0",
     "drizzle-orm": "^0.29.3",
     "elysia": "latest"
   },

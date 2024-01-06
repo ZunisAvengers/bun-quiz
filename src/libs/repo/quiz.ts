@@ -18,9 +18,9 @@ const queryQuzeById = db
   .orderBy(stepTable.order)
   .prepare();
 
-export const insertQuiz = async (quiz: Quiz) => {
+export const insertQuiz = async (quiz: Quiz, userId?: number) => {
   const [{ quizId }] = await db
-    .insert(quizTable)
+    .insert({ ...quizTable, userId })
     .values(quiz)
     .returning({ quizId: quizTable.id });
 
@@ -36,7 +36,7 @@ export const getById = async (id: number) => {
 
   for (const { step, variant } of result) {
     if (!step || !variant) continue;
-    if (!stepDict[step.id]) stepDict[step.id] = { ...step, variants: [] };
+    if (!(step.id in stepDict)) stepDict[step.id] = { ...step, variants: [] };
     stepDict[step.id].variants.push(variant);
   }
 
