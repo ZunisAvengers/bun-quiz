@@ -15,7 +15,7 @@ export const createQuizValidator = (requiredId = true) => {
 
   const stepValidator = t.Object({
     id: idValidator,
-    order: t.Integer(),
+    order: t.Optional(t.Number()),
     question: t.String(),
     background: t.Optional(t.String()),
     quizId: idValidator,

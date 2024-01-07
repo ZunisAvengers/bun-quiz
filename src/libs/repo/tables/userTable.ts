@@ -6,6 +6,6 @@ export const userTable = sqliteTable("user", {
   login: text("login").notNull().unique(),
   passwordHash: text("password_hash").notNull(),
   createAt: integer("create_at", { mode: "timestamp" }).default(
-    sql`(strftime('%s', 'now')`
+    sql`strftime('%s', 'now')`
   ),
 });

@@ -8,7 +8,7 @@ export const quizTable = sqliteTable("quiz", {
   background: text("background"),
   avatar: text("avatar"),
   createAt: integer("create_at", { mode: "timestamp" }).default(
-    sql`(strftime('%s', 'now')`
+    sql`strftime('%s', 'now')`
   ),
   author: integer("author").references(() => userTable.id),
 });
